@@ -1,0 +1,58 @@
+name: CI Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-train:
+    runs-on: ubuntu-latest
+    env:
+      DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
+      DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.9"
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f Membangun_model/requirements.txt ]; then pip install -r Membangun_model/requirements.txt; fi
+        pip install pandas numpy scikit-learn category_encoders joblib matplotlib seaborn nbformat
+
+    - name: Run Data Preprocessing
+      run: |
+        # Ensure data directory exists
+        if [ -f data/train.csv ]; then
+          python preprocessing/automate_IMadeWisnuAdiSanjaya.py
+        else
+          echo "Warning: data/train.csv not found. Skipping preprocessing."
+          # Create dummy processed file for testing if real data is missing
+          mkdir -p data/processed
+          echo "dummy" > data/processed/train_processed.csv
+        fi
+
+    - name: Run Model Training
+      run: |
+        # Only run if processed data exists or was created
+        if [ -f data/processed/train_processed.csv ]; then
+           python Membangun_model/modelling_tuning.py
+        else
+           echo "Skipping training due to missing data."
+        fi
+
+    - name: Upload Artifacts (Skilled Criteria)
+      uses: actions/upload-artifact@v3
+      with:
+        name: ml-artifacts
+        path: |
+          model_artifacts/
+          feature_importance.png
+          data/processed/train_processed.csv

@@ -1,16 +1,9 @@
-# Submission folder (local only, not for GitHub)
-SMSML_IMadeWisnuAdiSanjaya/
 
-# Kriteria 2 & 3 (separate submissions)
-Membangun_model/
+
+# Separate Repositories/Submission Folders
 Workflow-CI/
-MLProject
-conda.yaml
-Dockerfile
-DagsHub.txt
-
-# Kriteria 4 (Monitoring - local only)
-Monitoring_and_Logging/
+SMSML_IMadeWisnuAdiSanjaya/
+SMSML_IMadeWisnuAdiSanjaya.zip
 
 # Generated files
 model_artifacts/
