@@ -43,7 +43,16 @@ def main():
 
     # Ambil 1 SKU saja untuk demo cepat
     target_sku = 216418
+    print(f"Filtering for SKU: {target_sku}")
+    
+    # Debug: Check avaliable SKUs
+    print(f"Available SKUs in data: {df['sku_id'].unique()}")
+    
     df = df[df['sku_id'] == target_sku]
+    
+    if df.empty:
+        print(f"Error: No data found for SKU {target_sku}!")
+        return
     
     # Pilih Fitur
     features = [c for c in df.columns if 'lag_' in c or 'ma_' in c or 'store_encoded' in c or 'total_price' in c]
