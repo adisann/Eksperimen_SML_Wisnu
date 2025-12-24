@@ -5,6 +5,8 @@ import joblib
 from category_encoders import MEstimateEncoder
 from config import SKU_SPECIFIC_LAGS, SKU_SPECIFIC_MAS
 import os
+import sklearn
+print(f"Scikit-learn version: {sklearn.__version__}")
 
 def preprocess():
     print("Mulai Preprocessing...")
