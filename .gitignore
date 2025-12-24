@@ -1,0 +1,29 @@
+# Submission folder (local only, not for GitHub)
+SMSML_IMadeWisnuAdiSanjaya/
+
+# Kriteria 2 & 3 (separate submissions)
+Membangun_model/
+Workflow-CI/
+MLProject
+conda.yaml
+Dockerfile
+DagsHub.txt
+
+# Kriteria 4 (Monitoring - local only)
+Monitoring_and_Logging/
+
+# Generated files
+model_artifacts/
+data/processed/
+__pycache__/
+*.pyc
+*.pkl
+*.png
+feature_importance.png
+
+# IDE
+.vscode/
+.idea/
+
+# Original notebook (already copied to preprocessing)
+recursive-demand-forecasting-end-to-end.ipynb
