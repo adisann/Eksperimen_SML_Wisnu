@@ -16,7 +16,7 @@ import os
 # GitHub Actions environment variables
 DAGSHUB_USERNAME = os.environ.get("DAGSHUB_USERNAME")
 DAGSHUB_TOKEN = os.environ.get("DAGSHUB_TOKEN")
-DAGSHUB_REPO_NAME = "Retail_Forecasting"
+DAGSHUB_REPO_NAME = "Eksperimen_SML"
 
 if DAGSHUB_USERNAME and DAGSHUB_TOKEN:
     # Set Tracking URI manually to avoid dagshub.init() auth issues
