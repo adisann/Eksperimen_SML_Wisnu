@@ -13,12 +13,21 @@ from sklearn.metrics import mean_squared_error
 import os
 
 # Init DagsHub Connection
-# GitHub Actions akan mengisi os.environ ini nanti
-DAGSHUB_REPO_OWNER = os.environ.get("DAGSHUB_USERNAME") 
-DAGSHUB_REPO_NAME = "Retail_Forecasting" # Sesuaikan nama repo DagsHub Anda
+# GitHub Actions environment variables
+DAGSHUB_USERNAME = os.environ.get("DAGSHUB_USERNAME")
+DAGSHUB_TOKEN = os.environ.get("DAGSHUB_TOKEN")
+DAGSHUB_REPO_NAME = "Retail_Forecasting"
 
-if DAGSHUB_REPO_OWNER:
-    dagshub.init(repo_owner=DAGSHUB_REPO_OWNER, repo_name=DAGSHUB_REPO_NAME, mlflow=True)
+if DAGSHUB_USERNAME and DAGSHUB_TOKEN:
+    # Set Tracking URI manually to avoid dagshub.init() auth issues
+    os.environ["MLFLOW_TRACKING_USERNAME"] = DAGSHUB_USERNAME
+    os.environ["MLFLOW_TRACKING_PASSWORD"] = DAGSHUB_TOKEN
+    
+    tracking_uri = f"https://dagshub.com/{DAGSHUB_USERNAME}/{DAGSHUB_REPO_NAME}.mlflow"
+    mlflow.set_tracking_uri(tracking_uri)
+    print(f"MLflow Tracking URI set to: {tracking_uri}")
+else:
+    print("Warning: DAGSHUB_USERNAME or DAGSHUB_TOKEN not found. Tracking may fail.")
 
 def rmsle(y_true, y_pred):
     return np.sqrt(mean_squared_error(np.log1p(y_true), np.log1p(y_pred)))
