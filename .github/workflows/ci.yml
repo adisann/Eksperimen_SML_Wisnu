@@ -49,7 +49,7 @@ jobs:
         fi
 
     - name: Upload Artifacts (Skilled Criteria)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ml-artifacts
         path: |
