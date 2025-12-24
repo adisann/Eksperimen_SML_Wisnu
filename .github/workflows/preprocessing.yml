@@ -13,6 +13,6 @@ jobs:
       with:
         python-version: '3.9'
     - name: Install dependencies
-      run: pip install pandas numpy scikit-learn category_encoders joblib
+      run: pip install pandas numpy "scikit-learn==1.5.2" category_encoders joblib
     - name: Run Preprocessing script
       run: python preprocessing/automate_preprocessing.py
