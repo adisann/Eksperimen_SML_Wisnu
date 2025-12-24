@@ -36,7 +36,18 @@ def preprocess():
     # 5. Feature Engineering (Lags & MA)
     # Kita filter dataset agar tidak terlalu besar saat demo
     target_skus = list(SKU_SPECIFIC_LAGS.keys())
+    print(f"Target SKUs: {target_skus}")
+    
+    # Check data before filter
+    print(f"Total rows before filter: {len(train)}")
+    print(f"Unique SKUs in data: {train['sku_id'].unique()[:10]}")
+    
     train = train[train['sku_id'].isin(target_skus)].copy()
+    print(f"Total rows after filter: {len(train)}")
+    
+    if train.empty:
+        print("WARNING: Data become empty after filtering SKUs!")
+        print(f"Check if {target_skus} exist in {train['sku_id'].unique()}")
     
     print("Membuat Fitur Time Series...")
     df_list = []
@@ -55,8 +66,15 @@ def preprocess():
             
         df_list.append(df_sku)
         
+    if not df_list:
+        print("WARNING: df_list is empty!")
+        return
+
     df_final = pd.concat(df_list)
+    print(f"Rows before dropna: {len(df_final)}")
+    
     df_final = df_final.dropna()
+    print(f"Rows after dropna: {len(df_final)}")
     
     # 6. Simpan Hasil
     os.makedirs('data/processed', exist_ok=True)
