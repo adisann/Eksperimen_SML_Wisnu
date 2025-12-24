@@ -1,0 +1,15 @@
+
+pandas
+numpy
+scikit-learn
+category_encoders
+optuna
+mlflow==2.19.0
+dagshub
+matplotlib
+seaborn
+prometheus-client
+uvicorn
+fastapi
+joblib
+requests
