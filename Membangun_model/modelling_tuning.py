@@ -111,7 +111,10 @@ def main():
         
         # 3. Upload Artifact ke DagsHub
         mlflow.log_artifact("feature_importance.png")
-        print("Model dan Artifact berhasil di-log ke DagsHub!")
+        
+        # 4. Upload Artifact Tambahan (Requirement) - Agar poin Advance (Artifact > 2)
+        mlflow.log_artifact("Membangun_model/requirements.txt")
+        print("Model, Feature Importance, dan Requirements berhasil di-log ke DagsHub!")
 
 if __name__ == "__main__":
     main()
