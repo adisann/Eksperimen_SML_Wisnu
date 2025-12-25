@@ -1,3 +1,1 @@
-DagsHub Repository Info
-User: [Username]
-Repo: [RepoName]
+https://dagshub.com/adisann/Eksperimen_SML
