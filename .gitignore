@@ -1,22 +1,40 @@
-
-
-# Separate Repositories/Submission Folders
-Workflow-CI/
-SMSML_IMadeWisnuAdiSanjaya/
-SMSML_IMadeWisnuAdiSanjaya.zip
-
-# Generated files
-model_artifacts/
-data/processed/
+# Python
 __pycache__/
-*.pyc
-*.pkl
-*.png
-feature_importance.png
+*.py[cod]
+*$py.class
 
-# IDE
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDES
 .vscode/
 .idea/
 
-# Original notebook (already copied to preprocessing)
+# MLflow
+mlruns/
+mlflow.db
+model_artifacts/
+*.pkl
+
+# Submission Artifacts (We don't want duplicates in the repo)
+SMSML_IMadeWisnuAdiSanjaya/
+*.zip
+
+# Old/Redundant Notebooks & Files
+Template_Eksperimen_MSML.ipynb
 recursive-demand-forecasting-end-to-end.ipynb
+DagsHub.txt
+
+# Loose Plots (Generated in root)
+*.png
+!Membangun_model/*.png
+!Monitoring_and_Logging/*.png
+
+# Nested Repo (If any)
+Workflow-CI/
