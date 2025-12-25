@@ -11,6 +11,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+smsml/
 
 # IDES
 .vscode/
@@ -30,6 +31,7 @@ SMSML_IMadeWisnuAdiSanjaya/
 Template_Eksperimen_MSML.ipynb
 recursive-demand-forecasting-end-to-end.ipynb
 DagsHub.txt
+*_BACKUP.ipynb
 
 # Loose Plots (Generated in root)
 *.png
