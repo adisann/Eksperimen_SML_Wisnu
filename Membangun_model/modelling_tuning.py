@@ -112,6 +112,40 @@ def main():
         
         # 3. Upload Artifact ke DagsHub
         mlflow.log_artifact("feature_importance.png")
+
+        # [NEW] Artifact 1: Actual vs Predicted
+        y_pred = model.predict(X)
+        residuals = y - y_pred
+        
+        plt.figure(figsize=(8, 5))
+        plt.scatter(y, y_pred, alpha=0.5)
+        plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')
+        plt.xlabel('Actual')
+        plt.ylabel('Predicted')
+        plt.title('Actual vs Predicted')
+        plt.tight_layout()
+        plt.savefig("prediction_check.png")
+        mlflow.log_artifact("prediction_check.png")
+        
+        # [NEW] Artifact 2: Residual Plot
+        plt.figure(figsize=(8, 5))
+        plt.scatter(y_pred, residuals, alpha=0.5)
+        plt.axhline(0, color='r', linestyle='--')
+        plt.xlabel('Predicted')
+        plt.ylabel('Residuals')
+        plt.title('Residual Plot')
+        plt.tight_layout()
+        plt.savefig("residual_plot.png")
+        mlflow.log_artifact("residual_plot.png")
+
+        # [NEW] Artifact 3: Error Distribution
+        plt.figure(figsize=(8, 5))
+        sns.histplot(residuals, kde=True)
+        plt.title('Error Distribution')
+        plt.xlabel('Error')
+        plt.tight_layout()
+        plt.savefig("error_distribution.png")
+        mlflow.log_artifact("error_distribution.png")
         
         # 4. Upload Artifact Tambahan (Requirement) - Agar poin Advance (Artifact > 2)
         # Check explicitly if file exists before logging

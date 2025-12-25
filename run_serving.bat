@@ -6,9 +6,12 @@ echo Ensure you have trained the model at least once so it is registered in MLfl
 echo Model Name: Retail_Forecasting_Model
 echo.
 
+echo Adding Python Scripts to PATH to ensure uvicorn is found...
+set "PATH=%PATH%;C:\Users\wisnu\AppData\Roaming\Python\Python314\Scripts"
+
 echo Starting MLflow Model Serving on port 5001...
 echo (Check the new window for logs)
-start "MLflow Serve" mlflow models serve -m models:/Retail_Forecasting_Model/latest -p 5001 --no-conda
+start "MLflow Serve" python -m mlflow models serve -m models:/Retail_Forecasting_Model/latest -p 5001 --no-conda
 
 echo.
 echo Waiting 15 seconds for Model Server to initialize...

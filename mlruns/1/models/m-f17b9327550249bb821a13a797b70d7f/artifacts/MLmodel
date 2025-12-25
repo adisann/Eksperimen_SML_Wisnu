@@ -1,0 +1,39 @@
+artifact_path: file:C:/Users/wisnu/OneDrive/Documents/00_Kuliah/Internship/Submission_MLOps/mlruns/1/models/m-f17b9327550249bb821a13a797b70d7f/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.14.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.7.2
+is_signature_from_type_hint: false
+mlflow_version: 3.7.0
+model_id: m-f17b9327550249bb821a13a797b70d7f
+model_size_bytes: 1537717
+model_uuid: m-f17b9327550249bb821a13a797b70d7f
+prompts: null
+run_id: d7ff1f561c3c4f65a8990320e63fada9
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "double", "name": "total_price", "required": true}, {"type":
+    "double", "name": "store_encoded", "required": true}, {"type": "double", "name":
+    "lag_1", "required": true}, {"type": "double", "name": "lag_2", "required": true},
+    {"type": "double", "name": "lag_5", "required": true}, {"type": "double", "name":
+    "lag_19", "required": true}, {"type": "double", "name": "ma_1", "required": true},
+    {"type": "double", "name": "ma_2", "required": true}, {"type": "double", "name":
+    "ma_4", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-12-24 16:36:59.040579'
